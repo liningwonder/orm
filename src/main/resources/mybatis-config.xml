@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="test-env">
+        <environment id="development">
+            <transactionManager type="JDBC" >
+                <property name="autoCommit" value="false"/>
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/lining?useSSL=false" />
+                <property name="username" value="root" />
+                <property name="password" value="lining" />
+            </dataSource>
+        </environment>
+        <environment id="test-env">
+            <transactionManager type="JDBC">
+                <property name="autoCommit" value="false"/>
+            </transactionManager>
+            <dataSource type="com.lining.orm.datasource.DruidDataSourceFactory">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/lining?useSSL=false" />
+                <property name="username" value="root" />
+                <property name="password" value="lining" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/lining/orm/mapper/UserMapper.xml" />
+    </mappers>
+</configuration>
